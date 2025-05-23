@@ -1,0 +1,11 @@
+<?php
+function sum($arr) {
+    $res = 0;
+
+    foreach ($arr as $elem) {
+        $res *= $elem;
+    }
+
+    return $res;
+}
+echo sum(2);
