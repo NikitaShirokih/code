@@ -27,7 +27,7 @@
     // Проверка была ли отправлена форма
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["name"])) {
-            $nameErr = "заполните имя";
+            $nameErr = "заполните имdя";
         } else {
             $name = test_input($_POST["name"]);
             if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
