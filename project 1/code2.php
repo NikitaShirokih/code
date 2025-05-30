@@ -78,38 +78,50 @@
     ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="Utf-8">
 <head>
  <meta charset="UTF-8">
     <title>Задание</title>
+</head>
     <body>
 <h2>Регистрация</h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    Name: <input type ="text" name ="name" value="<?php echo $name;?>">
+    Name: <label>
+        <input type ="text" name ="name" value="<?php echo $name;?>">
+    </label>
     <span class = 'error'><?php echo $nameErr;?></span>
     <br><br>
 
-    Email: <input type ="text" name ="email" value="<?php echo $email;?>">
+    Email: <label>
+        <input type ="text" name ="email" value="<?php echo $email;?>">
+    </label>
     <span class = 'error'><?php echo $emailErr;?></span>
     <br><br>
 
-    Number: <input type ="tel" name="phone" value="<?php echo $phone;?>">
+    Number: <label>
+        <input type ="tel" name="phone" value="<?php echo $phone;?>">
+    </label>
     <span class = "error"><?php echo $phoneErr;?></span>
     <br><br>
 
-    Password: <input type ="password" name="password" value="<?php echo $password1;?>">
+    Password: <label>
+        <input type ="password" name="password" value="<?php echo $password1;?>">
+    </label>
     <span class = "error"><?php echo $password1Err;?></span>
     <br><br>
 
-    Повторите пароль: <input type = "password" name="password" value="<?php echo $password2;?>">
+    Повторите пароль: <label>
+        <input type = "password" name="password" value="<?php echo $password2;?>">
+    </label>
     <span class = "error"><?php echo $password2Err;?></span>
     <br><br>
 
-    Солгасны с условиями: <input type ="checkbox" name="checkbox" value="<?php echo $checkbox;?>">
+    Солгасны с условиями: <label>
+        <input type ="checkbox" name="checkbox" value="<?php echo $checkbox;?>">
+    </label>
     <span class = "error"><?php echo $checkboxErr;?></span>
     <br><br>
-
+</form>
 </body>
-</head>
 </html>
 
