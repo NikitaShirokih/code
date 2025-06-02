@@ -27,7 +27,7 @@
     // Проверка была ли отправлена форма
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["name"])) {
-            $nameErr = "заполните имdя";
+            $nameErr = "заполните имя";
         } else {
             $name = test_input($_POST["name"]);
             if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
@@ -71,10 +71,17 @@
         }
         // отправление формы
         if(empty($name) && empty($email) && empty($phone) && empty($password1) && empty($password2) && empty($checkbox)) {
-            echo "<div class='success'>Форма отправлена</div>";
-            $name = $email = $phone = $password1 = $password2 = $checkbox = "";
+        }
+        try {
+            $stmt = $conn->prepare("INSERT INTO users (name, email, phone, password) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$name, $email, $phone, $password1]);
+            $lastId = $conn->lastInsertId();
+            echo "<div class='success'>Форма отправлена. Ваш ID: " . $lastId . "</div>";
+        } catch (PDOException $e) {
+            echo "<div class='error'>Ошибка базы данных: " . $e->getMessage() . "</div>";
         }
     }
+
     ?>
 
 <!DOCTYPE html>
@@ -111,7 +118,7 @@
     <br><br>
 
     Повторите пароль: <label>
-        <input type = "password" name="password" value="<?php echo $password2;?>">
+        <input type = "password" name="password2" value="<?php echo $password2;?>">
     </label>
     <span class = "error"><?php echo $password2Err;?></span>
     <br><br>
@@ -121,6 +128,8 @@
     </label>
     <span class = "error"><?php echo $checkboxErr;?></span>
     <br><br>
+
+    <input type="submit">
 </form>
 </body>
 </html>
