@@ -1,0 +1,26 @@
+{
+    "name": "nikita/neero",
+    "description": "The project with composer",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Nikita\\Neero\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "NikitaShirokih",
+            "email": "scop.nik@gmail.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "autoload": {
+        "psr-4": {
+            "neero\\": "neero"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
